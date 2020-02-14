@@ -67,24 +67,32 @@ void queue::push(double q){
     first = new qnode(q);
     last = first;
   }else{
-    last->next = new qnode(q);
-    last = new qnode(d);
+    qnode* new_last = new qnode(q); 
+    last->next = new_last;
+    last = new_last;
   }
     ++current_size;
 }
 
 queue::queue():
   first(nullptr),
+  last(nullptr),
   current_size(0){
 
   }
 
-queue::queue(const queue& q):
-  current_size(q.current_size),
-  first(new qnode(q.first)),
-  last(new qnode(q.last))
+queue::queue(const queue& q)
+  // current_size(q.current_size),
+  // first(new qnode(q.first))
   {
-    for( const qnode* p = first; p; p = p -> next ){
-      p->next =
+    for( const qnode* p = q.first; p; p = p -> next ){
+      push(p.value);
   }
 }
+
+queue::queue(std::initilizer_list<double> init){
+  for(double val:init){
+    push(val);
+  }
+}
+
