@@ -43,10 +43,10 @@ public:
    void pop( );
    void clear( );
 
-   double peek( ) const;
+   double peek	( ) const;
 
-   size_t size( ) const { return current_size; } 
-   bool empty( ) const { return current_size == 0; } 
+   size_t size( ) const;// { return current_size; } 
+   bool empty( ) const;// { return current_size == 0; } 
    
    void print( std::ostream& ) const; 
 
@@ -54,7 +54,12 @@ public:
       // Call this function frequently.   
 }; 
 
-
+inline std::ostream& operator << ( std::ostream& out, const queue& q )
+{
+	//std::cout<<q.first->val;
+	q. print( out );
+	return out;
+}
 void testqueue( );
    // Write this function in queue.cpp. It must do some tests on
    // queue. 
