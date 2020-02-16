@@ -4,7 +4,7 @@
 // TODO: Implement everything from the queue class here, along with
 // testqueue ... we are only providing checkinvariant
 void testqueue(){
-	queue q1 = {2, 3, 4, 5};
+	queue q1 = {1, 2, 3, 4, 5};
 	std::cout << q1;
 	queue q2 = q1;
 	std::cout << q2;
@@ -34,7 +34,7 @@ void testqueue(){
 			}
 		}
 	}
-
+	std::cout << q1;
 }
 bool queue::empty() const{
 	return current_size == 0;
