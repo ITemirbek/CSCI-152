@@ -20,7 +20,21 @@ void testqueue(){
 	std::cout << "q1 last -> " << q1.peek() << "\n";
 //	queue q3;
 //	std::cout << q3.peek();
-	
+	for( unsigned int j = 0; j < 30; ++ j )
+	{
+		q1. push( j * j );
+		q1. checkinvariant( );
+		if( j % 5 == 0 )
+		{
+			while( q1. size( ))
+			{
+				std::cout << q1. peek( ) << "\n";
+				q1. pop( );
+				q1. checkinvariant( );
+			}
+		}
+	}
+
 }
 bool queue::empty() const{
 	return current_size == 0;
