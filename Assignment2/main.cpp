@@ -154,121 +154,121 @@ int main( int argc, char* argv [ ] )
    }
 
    std::cout << q << "\n";
-   q. push(100);
-   d.push_back(100);
-   std::cout << q << "\n";
-   checkInv(q);
+//    q. push(100);
+//    d.push_back(100);
+//    std::cout << q << "\n";
+//    checkInv(q);
 
-   queue q2 = q;
-   std::deque<double> d2 = d;
-   std::cout << q << "\n";
-   std::cout << q2 << "\n";
-   q. clear( );
-   q2. clear( );
-   d.clear();
-   d2.clear();
+//    queue q2 = q;
+//    std::deque<double> d2 = d;
+//    std::cout << q << "\n";
+//    std::cout << q2 << "\n";
+//    q. clear( );
+//    q2. clear( );
+//    d.clear();
+//    d2.clear();
    
-   for( size_t i = 0; i < 0; ++ i ) {
-      q. push(i);
-      d.push_back(i);
-   }
+//    for( size_t i = 0; i < 0; ++ i ) {
+//       q. push(i);
+//       d.push_back(i);
+//    }
 
-   for( size_t i = 0; i < 4; ++ i ) {
-      q2. push(100+i);
-      d2.push_back(100+i);
-   }
+//    for( size_t i = 0; i < 4; ++ i ) {
+//       q2. push(100+i);
+//       d2.push_back(100+i);
+//    }
 
-   checkInv(q); 
-   checkInv(q2); 
-   std::cout << q << "\n";
-   std::cout << q2 << "\n";
+//    checkInv(q); 
+//    checkInv(q2); 
+//    std::cout << q << "\n";
+//    std::cout << q2 << "\n";
 
-   message = "OPERATOR =";
-   q = q2; 
-   d = d2;
-   q2 = q2;
-   d2 = d2;
-   std::cout << "now q is " << q << "\n";
-   checkInv(q);
-   checkInv(q2);
-   checkSizet(message, q.size(), d.size());
-	checkBool(message, q.empty(), 0);
-   checkSizet(message, q2.size(), d2.size());
-	checkBool(message, q2.empty(), 0);
+//    message = "OPERATOR =";
+//    q = q2; 
+//    d = d2;
+//    q2 = q2;
+//    d2 = d2;
+//    std::cout << "now q is " << q << "\n";
+//    checkInv(q);
+//    checkInv(q2);
+//    checkSizet(message, q.size(), d.size());
+// 	checkBool(message, q.empty(), 0);
+//    checkSizet(message, q2.size(), d2.size());
+// 	checkBool(message, q2.empty(), 0);
 
-   while( q. size( ) > 3 )
-   {
-      //double d = q. peek( );
-      //std::cout << d << "\n";
-      checkDouble(message, q.peek(), d.front());
-      q. pop( );
-      d.pop_front();
-      checkInv(q); 
-   }
+//    while( q. size( ) > 3 )
+//    {
+//       //double d = q. peek( );
+//       //std::cout << d << "\n";
+//       checkDouble(message, q.peek(), d.front());
+//       q. pop( );
+//       d.pop_front();
+//       checkInv(q); 
+//    }
 
-   q = q2;
-   d = d2;
-   std::cout << q << "\n";
-   std::cout << q2 << "\n";
+//    q = q2;
+//    d = d2;
+//    std::cout << q << "\n";
+//    std::cout << q2 << "\n";
 
-   q2. push( 100000 );
-   d2.push_back(100000);
-   q. push( 20000 ); 
-   d.push_back(20000);
+//    q2. push( 100000 );
+//    d2.push_back(100000);
+//    q. push( 20000 ); 
+//    d.push_back(20000);
 
-   std::cout << q << "\n";
-   std::cout << q2 << "\n";
+//    std::cout << q << "\n";
+//    std::cout << q2 << "\n";
 
-   std::cout << q. size( ) << "\n";
-   std::cout << q2. size( ) << "\n";
+//    std::cout << q. size( ) << "\n";
+//    std::cout << q2. size( ) << "\n";
 
-   checkInv(q);
-   q2. checkinvariant( );
+//    checkInv(q);
+//    q2. checkinvariant( );
 
-   checkSizet(message, q.size(), d.size());
-	checkBool(message, q.empty(), 0);
-   checkSizet(message, q2.size(), d2.size());
-	checkBool(message, q2.empty(), 0);
+//    checkSizet(message, q.size(), d.size());
+// 	checkBool(message, q.empty(), 0);
+//    checkSizet(message, q2.size(), d2.size());
+// 	checkBool(message, q2.empty(), 0);
 
-   message = "INIT_LIST";
-   queue q3 = { 1,2,3,4,5,6 };
-   std::deque<double> d3 = {1,2,3,4,5,6};
-   std::cout << q3 << "\n";
-   while( q3. size( )) 
-   {
-      //std::cout << q3. peek( ) << "\n";
-      checkDouble(message, q3.peek(), d3.front());
-      q3. pop( );
-      d3.pop_front();
-      checkInv(q3);
-   }
+//    message = "INIT_LIST";
+//    queue q3 = { 1,2,3,4,5,6 };
+//    std::deque<double> d3 = {1,2,3,4,5,6};
+//    std::cout << q3 << "\n";
+//    while( q3. size( )) 
+//    {
+//       //std::cout << q3. peek( ) << "\n";
+//       checkDouble(message, q3.peek(), d3.front());
+//       q3. pop( );
+//       d3.pop_front();
+//       checkInv(q3);
+//    }
 
-   for( unsigned int i = 0; i < 42; ++ i )
-   {
-      q3. push(i); 
-      d3.push_back(i);
-      double db = q3. peek( ); 
-      checkDouble(message, db, d3.front());
-      q3. pop( ); 
-      d3.pop_front();
-      checkInv(q3); 
-      q3. push(db); 
-      d3.push_back(db);
-      checkInv(q3); 
-   }
+//    for( unsigned int i = 0; i < 42; ++ i )
+//    {
+//       q3. push(i); 
+//       d3.push_back(i);
+//       double db = q3. peek( ); 
+//       checkDouble(message, db, d3.front());
+//       q3. pop( ); 
+//       d3.pop_front();
+//       checkInv(q3); 
+//       q3. push(db); 
+//       d3.push_back(db);
+//       checkInv(q3); 
+//    }
 
-   message = "SOME MORE";
-   q = {1,2,3,4,5};
-   d = {1,2,3,4,5};
-   q2 = q;
-   d2 = d;
-   std::cout << q << "\n";
-   std::cout << q2 << "\n"; 
+//    message = "SOME MORE";
+//    q = {1,2,3,4,5};
+//    d = {1,2,3,4,5};
+//    q2 = q;
+//    d2 = d;
+//    std::cout << q << "\n";
+//    std::cout << q2 << "\n"; 
 
-   checkSizet(message, q.size(), d.size());
-	checkBool(message, q.empty(), 0);
-   checkSizet(message, q2.size(), d2.size());
-	checkBool(message, q2.empty(), 0);
+//    checkSizet(message, q.size(), d.size());
+// 	checkBool(message, q.empty(), 0);
+//    checkSizet(message, q2.size(), d2.size());
+// 	checkBool(message, q2.empty(), 0);
 
    std::cout << "\nTESTS RUN: " << tests_run << std::endl;
 	std::cout << "\nTESTS CORRECT: " << tests_correct << std::endl;	
