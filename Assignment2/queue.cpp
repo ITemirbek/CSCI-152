@@ -60,7 +60,7 @@ const queue& queue::operator = (const queue& q){
 		}
 		if(curr != nullptr)
 			clear();
-		else std::cout << "self assignment"<<"\n";
+// 		else std::cout << "self assignment"<<"\n";
 		//else clear();
 	}
 	if(first == nullptr){
