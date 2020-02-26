@@ -15,7 +15,7 @@ void checkBool( const std::string &s, const bool&  given, const bool& correct )
    tests_run++;	
    if( given != correct )
    {
-      std::cout << "~INCORRECT " << s << " : " << given <<
+      std::cout << "~INCORRECT -- BOOL" << s << " : " << given <<
                    " SHOULD HAVE BEEN " << correct << "\n";
    } else {
       std::cout << "~CORRECT " << s << " : " << given <<
@@ -29,7 +29,7 @@ void checkSizet( const std::string &s, const size_t&  given, const size_t& corre
    tests_run++;	
    if( given != correct )
    {
-      std::cout << "~INCORRECT " << s << " : " << given <<
+      std::cout << "~INCORRECT -- SIZE " << s << " : " << given <<
                    " SHOULD HAVE BEEN " << correct << "\n";
    } else {
       std::cout << "~CORRECT " << s << " : " << given <<
@@ -43,7 +43,7 @@ void checkDouble( const std::string &s, const double&  given, const double& corr
    tests_run++;	
    if( abs(given - correct) > 0.1 )
    {
-      std::cout << "~INCORRECT " << s << " : " << given <<
+      std::cout << "~INCORRECT -- DOUBLE " << s << " : " << given <<
                    " SHOULD HAVE BEEN " << correct << "\n";
    } else {
       std::cout << "~CORRECT " << s << " : " << given <<
@@ -154,9 +154,9 @@ int main( int argc, char* argv [ ] )
    }
 
    std::cout << q << "\n";
-   q. push(100);
-   d.push_back(100);
-   std::cout << q << "\n";
+//   q. push(100);
+//   d.push_back(100);
+//   std::cout << q << "\n";
    checkInv(q);
 
    queue q2 = q;

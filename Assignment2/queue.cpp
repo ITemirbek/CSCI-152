@@ -92,17 +92,15 @@ void queue::pop(){
 //	}
 	if(!first)
 		throw std::runtime_error("pop: queue us empty");
-	
-	if(current_size==1){
-		delete first;
+
+	qnode *old_first = first;
+	first = first->next;
+	delete old_first;
+	--current_size;
+	if(current_size==0){
 		first = nullptr;
 		last = nullptr;
-	}else{
-		qnode *old_first = first;
-		first = first->next;
-		delete old_first;
 	}
-	--current_size;
 }
 bool queue::checkinvariant( ) const
 {
