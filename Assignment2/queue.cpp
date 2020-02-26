@@ -45,7 +45,7 @@ size_t queue::size() const{
 double queue::peek() const{
 	if(current_size == 0)
 		throw std::runtime_error("peek: queue is empty!");
-	else return last->val;
+	else return first->val;
 }
 
 const queue& queue::operator = (const queue& q){
