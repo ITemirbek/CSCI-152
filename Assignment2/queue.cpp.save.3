@@ -12,29 +12,29 @@ void testqueue(){
 	std::cout << q2;
 	q1.clear();
 	std::cout << "q1 = " <<q1;
-	q1 = q2;
-	std::cout << "q1 = " <<q1;	
-	q1 = q1;
-	std::cout << "q1 = " <<q1;
-	q1.checkinvariant();
-	std::cout << "q1 last -> " << q1.peek() << "\n";
-	queue q3;
+	//q1 = q2;
+	//std::cout << "q1 = " <<q1;	
+	//q1 = q1;
+	//std::cout << "q1 = " <<q1;
+	//q1.checkinvariant();
+	//std::cout << "q1 last -> " << q1.peek() << "\n";
+//	queue q3;
 //	std::cout << q3.peek();
-	for( unsigned int j = 0; j < 30; ++ j )
-	{
-		q1. push( j * j );
-		q1. checkinvariant( );
-		if( j % 5 == 0 )
-		{
-			while( q1. size( ))
-			{
-				std::cout << q1. peek( ) << "\n";
-				q1. pop( );
-				q1. checkinvariant( );
-			}
-		}
-	}
-	std::cout << q1;
+//	for( unsigned int j = 0; j < 30; ++ j )
+//	{
+//		q1. push( j * j );
+//		q1. checkinvariant( );
+//		if( j % 5 == 0 )
+//		{
+//			while( q1. size( ))
+//			{
+//				std::cout << q1. peek( ) << "\n";
+//				q1. pop( );
+//				q1. checkinvariant( );
+//			}
+//		}
+//	}
+//	std::cout << q1;
 }
 bool queue::empty() const{
 	return current_size == 0;
@@ -74,35 +74,21 @@ const queue& queue::operator = (const queue& q){
 }
 
 void queue::clear(){
-	while(first!=nullptr)
+	while(first)
 		pop();
 }
 
 void queue::pop(){
-//	if(current_size==0)
-//		throw std::runtime_error("pop: queue is empty");
-//	else if(current_size==1){
-//		delete first;
-//		first = nullptr;
-//		last = first;
-//	}else {
-//		qnode *temp = first->next;
-//		delete first;
-//		first = temp;
-//	}
-	if(!first)
-		throw std::runtime_error("pop: queue us empty");
-	
-	if(current_size==1){
+	if(current_size==0)
+		throw std::runtime_error("pop: queue is empty");
+	else if(current_size==1){
 		delete first;
-		first = nullptr;
-		last = nullptr;
-	}else{
-		qnode *old_first = first;
-		first = first->next;
-		delete old_first;
+	}else {
+		qnode *temp = first->next;
+		delete first;
+		first = temp;
 	}
-	--current_size;
+		current_size--;
 }
 bool queue::checkinvariant( ) const
 {
@@ -201,6 +187,7 @@ queue::queue(std::initializer_list<double> init):
 }
 
 void queue::print(std::ostream& out) const{
+	
 	qnode *curr = first;
 	if(first){
 		while (curr != nullptr) {
@@ -208,7 +195,8 @@ void queue::print(std::ostream& out) const{
 			curr = curr->next;
 		}
 		out << "\n";
-	}else
+		
+	}else 
 		out << "Empty list!" << "\n";
 }
 queue::~queue(){
