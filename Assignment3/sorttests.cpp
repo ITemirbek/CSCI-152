@@ -153,7 +153,7 @@ int main( int argc, char* argv[] )
    timetable alg3("quick_sort");
    timetable alg4("insertion_sort");
 
-   for(size_t s = 1000; s < 10000000; s = 2*s){
+   for(size_t s = 1000; s < 16000; s = 2*s){
       std::vector<int> test1 = randomvector(s);
 
       auto test2 = test1;
