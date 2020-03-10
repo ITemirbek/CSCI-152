@@ -181,30 +181,14 @@ int main( int argc, char* argv[] )
    std::cout << alg2 << "\n";
    std::cout << alg3 << "\n";
    std::cout << alg4 << "\n";
-   // Answer question 2 in the comments:
-   //
-   // Is there a difference between compilation with optimization 
-   // on and compilation with optimization off?
-   // .....
 
+   // Question 2 : 
 
-   // Answer question 3 in the comments:  
-   //
-   // Establish which sorting algorithms have O(n^2) performance, and which
-   // ones have O(n. log(n)) performance.  
-   // 
+   // Question 3 : O(n^2): insertion_sort & bubble_sort, O(n.log(n)): heap_sort & quick_sort
 
-   // Answer question 4 in the comments:
-   //
-   // Among those with O(n^2), which one is faster?
-   // ....
+   // Question 4 : quick_sort
 
-
-   // Answer question 5 in the comments:
-   //
-   // Among those with O(n. log(n)), which one is faster?
-   // .... 
-
+   // Question 5: insertion sort
    std::cout << "have a nice day\n"; 
 }
  
