@@ -155,7 +155,7 @@ int main( int argc, char* argv[] )
    timetable alg4("insertion_sort");
 
    for(size_t s = 1000; s < 100000; s = 10*s){
-      std::std::vector<int> test1 = randomvector(s);
+      std::vector<int> test1 = randomvector(s);
 
       auto test2 = test1;
       auto test3 = test1;
