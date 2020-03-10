@@ -158,7 +158,7 @@ int main( int argc, char* argv[] )
 
       auto test2 = test1;
       auto test3 = test1;
-      auto test4 = test1;
+      std::list test4 = test1;
       timer tt; 
       bubble_sort(test1);
       alg1.insert(s, tt.time());
