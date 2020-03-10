@@ -6,8 +6,6 @@
 #include "timer.h" 
 #include "timetable.h"
 
-#include <bits/stdc++.h> 
-using namespace std;
 // Print a vector of integers:
 
 std::ostream& operator << ( std::ostream& out, const std::vector< int > & vect )
@@ -150,20 +148,39 @@ void insertion_sort( std::list< int > & lst )
  
 int main( int argc, char* argv[] )
 {
-   string algorithms[] = {"bubble_sort", "heap_sort", "quick_sort", "insertion_sort"};
+   
+   timetable alg1("bubble_sort");
+   timetable alg2("heap_sort");
+   timetable agl3("quick_sort");
+   timetable alg4("insertion_sort");
 
-   for (string algo:algorithms)
-   {
-      cout << algo << "\n";
+   for(size_t s = 1000; s < 100000; s = 10*s){
+      std::std::vector<int> test1 = randomvector(s);
+
+      auto test2 = test1;
+      auto test3 = test1;
+      auto test4 = test1;
+      timer tt; 
+      bubble_sort(test1);
+      alg1.insert(s, tt.time());
+
+      tt.clear();
+      heap_sort(test2);
+      alg2.insert(s, tt.time());
+
+      tt.clear();
+      quick_sort(test3);
+      alg3.insert(s, tt.time());
+
+      tt.clear();
+      insertion_sort(test4);
+      alg4.insert(s, tt.time());
    }
 
-   // for(size_t s = 1000; s < 100000; s = 10*s){
-   //    std::std::vector<int> test = randomvector(s);
-
-   //    auto test2 = test;
-
-
-   // }
+   std::cout << alg1 << "\n";
+   std::cout << alg2 << "\n";
+   std::cout << alg3 << "\n";
+   std::cout << alg4 << "\n";
    // Answer question 2 in the comments:
    //
    // Is there a difference between compilation with optimization 
