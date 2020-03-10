@@ -150,7 +150,7 @@ int main( int argc, char* argv[] )
 {
    timetable alg1("bubble_sort");
    timetable alg2("heap_sort");
-   timetable agl3("quick_sort");
+   timetable alg3("quick_sort");
    timetable alg4("insertion_sort");
 
    for(size_t s = 1000; s < 100000; s = 10*s){
