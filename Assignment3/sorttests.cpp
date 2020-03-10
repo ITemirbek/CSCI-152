@@ -148,7 +148,6 @@ void insertion_sort( std::list< int > & lst )
  
 int main( int argc, char* argv[] )
 {
-   
    timetable alg1("bubble_sort");
    timetable alg2("heap_sort");
    timetable agl3("quick_sort");
