@@ -151,15 +151,15 @@ int main( int argc, char* argv[] )
    timetable alg1("bubble_sort");
    timetable alg2("heap_sort");
    timetable alg3("quick_sort");
-//   timetable alg4("insertion_sort");
+   timetable alg4("insertion_sort");
 
-   for(size_t s = 1000; s < 100000; s = 10*s){
+   for(size_t s = 1000; s < 10000000; s = 10*s){
       std::vector<int> test1 = randomvector(s);
 
       auto test2 = test1;
       auto test3 = test1;
-//      std::list <int> test4 = test1;
-//      auto test4 = test1;
+      std::list <int> test4(test1.begin(), test1.end());
+
       timer tt; 
       bubble_sort(test1);
       alg1.insert(s, tt.time());
@@ -172,15 +172,15 @@ int main( int argc, char* argv[] )
       quick_sort(test3);
       alg3.insert(s, tt.time());
 
-//      tt.clear();
-//      insertion_sort(test4);
-//      alg4.insert(s, tt.time());
+     tt.clear();
+     insertion_sort(test4);
+     alg4.insert(s, tt.time());
    }
 
    std::cout << alg1 << "\n";
    std::cout << alg2 << "\n";
    std::cout << alg3 << "\n";
-//   std::cout << alg4 << "\n";
+   std::cout << alg4 << "\n";
    // Answer question 2 in the comments:
    //
    // Is there a difference between compilation with optimization 
