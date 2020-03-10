@@ -6,6 +6,8 @@
 #include "timer.h" 
 #include "timetable.h"
 
+#include <bits/stdc++.h> 
+using namespace std;
 // Print a vector of integers:
 
 std::ostream& operator << ( std::ostream& out, const std::vector< int > & vect )
@@ -148,7 +150,7 @@ void insertion_sort( std::list< int > & lst )
  
 int main( int argc, char* argv[] )
 {
-   string algorithms[] = {"bubble_sort", "heap_sort", "quick_sort", "insertion_sort"}
+   string algorithms[] = {"bubble_sort", "heap_sort", "quick_sort", "insertion_sort"};
 
    for (string algo:algorithms)
    {
