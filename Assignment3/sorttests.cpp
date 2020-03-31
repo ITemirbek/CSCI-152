@@ -182,7 +182,9 @@ int main( int argc, char* argv[] )
    std::cout << alg3 << "\n";
    std::cout << alg4 << "\n";
 
-   // Question 2 : 
+   // std::cout << (alg1.totaltime()+alg2.totaltime()+alg3.totaltime()+alg4.totaltime())/4 << "\n";
+
+   // Question 2 : Yes, it becomes about 8 times slower in average
 
    // Question 3 : O(n^2): insertion_sort & bubble_sort, O(n.log(n)): heap_sort & quick_sort
 
