@@ -94,12 +94,12 @@ size_t log_base2( size_t s ){
          s = s/2;
          ++value;
       }
-      return value;
    }
+   return value;
 }
 
 const treenode* find( const treenode* n, int i ){
-   const treenode* curr = n;
+   const treenode curr = n;
    while(curr!=nullptr){
       if(curr->val == i){
          return curr;
@@ -117,7 +117,7 @@ treenode** find( treenode** n, int i ){
    treenode* curr = *n;
    while(curr->left != nullptr & curr->right != nullptr){
       if(curr->val == i){
-         return curr;
+         return *curr;
          break;
       }
       else if(curr->val > i)
@@ -125,14 +125,15 @@ treenode** find( treenode** n, int i ){
       else if(curr->val < i)
          curr = curr->right;      
    }
-   return curr;
+   return *curr;
 }
 
 // PROOFREADING IS NEEDED
 bool set::insert(int i){
    treenode* curr = find( tr, i );
+   bool status = TRUE
    if(curr->val == i)
-      return FALSE;
+      status = FALSE;
    else if(curr->val>i){
       curr = curr->left;
       curr->val = i;
@@ -141,22 +142,21 @@ bool set::insert(int i){
       curr = curr->right;
       curr->val = i;      
    }
-   return TRUE;
+   return status;
 }
 
 bool set::contains( int i ) const{
    if(find(tr, i)==nullptr)
-      return FALSE;
-   else 
-      return TRUE;
+      return FALSE; 
+   return TRUE;
 }
 
 
-bool remove( int i ){
-   treenode* curr = find(tr, int i);
+bool set::remove( int i ){
+   treenode* curr = find(tr, i);
    if (curr->val ==i){
       if(curr->left != nullptr & curr->right != nullptr){
-         treenode* temp = removerightmost(curr);
+         treenode temp = removerightmost(curr);
          curr->val = temp->val;
          curr = temp;
          delete temp;
@@ -174,15 +174,12 @@ bool remove( int i ){
          delete temp;
       }
       return TRUE;
-   }else{
-      return FALSE;
-   }  
-   
-   
+   }
+   return FALSE;   
 }
 
 treenode* removerightmost( treenode** from ){
-   treenode* curr = *from->right;
+   treenode temp = from->right;
    while(temp->left!=nullptr){
       temp = temp->left
    }
