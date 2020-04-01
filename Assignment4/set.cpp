@@ -86,7 +86,7 @@ std::ostream& set::print( size_t indent, std::ostream& out ) const
 
 
 size_t log_base2( size_t s ){
-   value = 0;        
+   size_t value = 0;        
    if(s==0)
       return value;
    else{
@@ -99,7 +99,7 @@ size_t log_base2( size_t s ){
 }
 
 const treenode* find( const treenode* n, int i ){
-   const treenode curr = n;
+   treenode* curr = n;
    while(curr!=nullptr){
       if(curr->val == i){
          return curr;
