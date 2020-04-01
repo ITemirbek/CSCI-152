@@ -85,3 +85,102 @@ std::ostream& set::print( size_t indent, std::ostream& out ) const
 }
 
 
+size_t log_base2( size_t s ){
+   if(s==0)
+      return 0;
+   else{
+      value = 0;
+      while(s!=1){
+         s = s/2;
+         ++value;
+      }
+      return value;
+   }
+}
+
+const treenode* find( const treenode* n, int i ){
+   treenode* curr = n;
+   while(curr!=nullptr){
+      if(curr->val == i){
+         return curr;
+         break;
+      }
+      else if(curr->val > i)
+         curr = curr->left;
+      else if(curr->val < i)
+         curr = curr->right      
+   }
+   return curr;
+}
+
+treenode** find( treenode** n, int i ){
+   treenode* curr = *n;
+   while(curr->left != nullptr & curr->right != nullptr){
+      if(curr->val == i){
+         return curr;
+         break;
+      }
+      else if(curr->val > i)
+         curr = curr->left;
+      else if(curr->val < i)
+         curr = curr->right      
+   }
+   return curr;
+}
+
+// PROOFREADING IS NEEDED
+bool set::insert(int i){
+   treenode* curr = find( tr, int i );
+   if(curr->val == i)
+      return FALSE;
+   else if(curr->val>i)
+      curr->left = i;
+   else 
+      curr->right = i;
+   return TRUE;
+}
+
+bool set::contains( int i ) const{
+   if(find(tr, i)==nullptr)
+      return FALSE;
+   else 
+      return TRUE;
+}
+
+
+bool remove( int i ){
+   treenode* curr = find(tr, int i);
+   if (curr->val ==i){
+      if(curr->left != nullptr & curr->right != nullptr){
+         treenode* temp = removerightmost(curr);
+         curr->val = temp->val;
+         curr = temp;
+         delete temp;
+      }
+      if(curr->left == nullptr & curr->right == nullptr){
+         delete curr;
+         curr = nullptr;
+      }else if(curr->left != nullptr){
+         treenode* temp = curr;
+         curr = curr ->left;
+         delete temp;
+      }else if(curr->right != nullptr){
+         treenode* temp = curr;
+         curr = curr ->right;
+         delete temp;
+      }
+      return TRUE;
+   }else{
+      return FALSE;
+   }  
+   
+   
+}
+
+treenode* removerightmost( treenode** from ){
+   treenode* curr = *from->right;
+   while(temp->left!=nullptr){
+      temp = temp->left
+   }
+   return temp;
+}
