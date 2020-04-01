@@ -86,10 +86,10 @@ std::ostream& set::print( size_t indent, std::ostream& out ) const
 
 
 size_t log_base2( size_t s ){
+   value = 0;        
    if(s==0)
-      return 0;
+      return value;
    else{
-      value = 0;
       while(s!=1){
          s = s/2;
          ++value;
@@ -99,7 +99,7 @@ size_t log_base2( size_t s ){
 }
 
 const treenode* find( const treenode* n, int i ){
-   treenode* curr = n;
+   const treenode* curr = n;
    while(curr!=nullptr){
       if(curr->val == i){
          return curr;
@@ -108,7 +108,7 @@ const treenode* find( const treenode* n, int i ){
       else if(curr->val > i)
          curr = curr->left;
       else if(curr->val < i)
-         curr = curr->right      
+         curr = curr->right;      
    }
    return curr;
 }
@@ -123,20 +123,24 @@ treenode** find( treenode** n, int i ){
       else if(curr->val > i)
          curr = curr->left;
       else if(curr->val < i)
-         curr = curr->right      
+         curr = curr->right;      
    }
    return curr;
 }
 
 // PROOFREADING IS NEEDED
 bool set::insert(int i){
-   treenode* curr = find( tr, int i );
+   treenode* curr = find( tr, i );
    if(curr->val == i)
       return FALSE;
-   else if(curr->val>i)
-      curr->left = i;
-   else 
-      curr->right = i;
+   else if(curr->val>i){
+      curr = curr->left;
+      curr->val = i;
+   }
+   else{
+      curr = curr->right;
+      curr->val = i;      
+   }
    return TRUE;
 }
 
