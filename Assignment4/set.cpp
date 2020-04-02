@@ -113,20 +113,20 @@ const treenode* find( const treenode* n, int i ){
    return curr;
 }
 
-// treenode** find( treenode** n, int i ){
-//    treenode* curr = *n;
-//    while(curr->left != nullptr & curr->right != nullptr){
-//       if(curr->val == i){
-//          return *curr;
-//          break;
-//       }
-//       else if(curr->val > i)
-//          curr = curr->left;
-//       else if(curr->val < i)
-//          curr = curr->right;      
-//    }
-//    return *curr;
-// }
+treenode** find( treenode** n, int i ){
+   treenode* curr = *n;
+   while(curr->left != nullptr & curr->right != nullptr){
+      if(curr->val == i){
+         return *curr;
+         break;
+      }
+      else if(curr->val > i)
+         curr = curr->left;
+      else if(curr->val < i)
+         curr = curr->right;      
+   }
+   return *curr;
+}
 
 // // PROOFREADING IS NEEDED
 // bool set::insert(int i){
