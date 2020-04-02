@@ -98,20 +98,20 @@ size_t log_base2( size_t s ){
    return value;
 }
 
-// const treenode* find( const treenode* n, int i ){
-//    treenode* curr = n;
-//    while(curr!=nullptr){
-//       if(curr->val == i){
-//          return curr;
-//          break;
-//       }
-//       else if(curr->val > i)
-//          curr = curr->left;
-//       else if(curr->val < i)
-//          curr = curr->right;      
-//    }
-//    return curr;
-// }
+const treenode* find( const treenode* n, int i ){
+   auto curr = n;
+   while(curr!=nullptr){
+      if(curr->val == i){
+         return curr;
+         break;
+      }
+      else if(curr->val > i)
+         curr = curr->left;
+      else if(curr->val < i)
+         curr = curr->right;      
+   }
+   return curr;
+}
 
 // treenode** find( treenode** n, int i ){
 //    treenode* curr = *n;

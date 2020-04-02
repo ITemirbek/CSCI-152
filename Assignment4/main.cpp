@@ -8,6 +8,7 @@
 int main( int argc, char* argv[ ] )
 {
 #if 0
+   
    set small;    // A small test tree.
 
    std::cout << small. height( ) << "\n";
