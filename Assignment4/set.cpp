@@ -115,8 +115,8 @@ const treenode* find( const treenode* n, int i ){
 }
 
 treenode** find( treenode** n, int i ){
-   auto curr = n;
-   while(curr->left != nullptr & curr->right != nullptr){
+   treenode* curr = n;
+   while(curr!= nullptr){
       if(curr->val == i){
          return curr;
          break;
