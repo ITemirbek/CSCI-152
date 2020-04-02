@@ -69,6 +69,7 @@ void writecopy( treenode** to, treenode* from )
       to = & (*to) -> right;
       from = from -> right;
    }
+   *to = nullptr;
 }
 
 
@@ -117,7 +118,7 @@ treenode** find( treenode** n, int i ){
    treenode* curr = *n;
    while(curr->left != nullptr & curr->right != nullptr){
       if(curr->val == i){
-         return *curr;
+         return curr;
          break;
       }
       else if(curr->val > i)
@@ -125,7 +126,7 @@ treenode** find( treenode** n, int i ){
       else if(curr->val < i)
          curr = curr->right;      
    }
-   return *curr;
+   return curr;
 }
 
 // // PROOFREADING IS NEEDED
