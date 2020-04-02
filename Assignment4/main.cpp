@@ -7,7 +7,7 @@
 
 int main( int argc, char* argv[ ] )
 {
-   treenode* tr(6);
+   treenode* tr=6;
    std::cout << find(tr, 6) << "\n";
 #if 0
 
