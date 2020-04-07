@@ -28,7 +28,7 @@ void deallocate( treenode* n );
 void writecopy( treenode** to, treenode* from );
    // Write a copy of from into *to.
 
-const treenode* find( const treenode* n, int i );
+const treenode* find( treenode* n, int i );
 treenode** find( treenode** n, int i );
 
 treenode* removerightmost( treenode** from ); 

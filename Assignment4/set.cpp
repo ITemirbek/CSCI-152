@@ -99,90 +99,105 @@ size_t log_base2( size_t s ){
    return value;
 }
 
-const treenode* find( const treenode* n, int i ){
-   auto curr = n;
-   while(curr!=nullptr){
-      if(curr->val == i){
-         return curr;
-         break;
-      }
-      else if(curr->val > i)
-         curr = curr->left;
-      else if(curr->val < i)
-         curr = curr->right;      
+const treenode* find( treenode* n, int i ){
+   if (n == nullptr || n->val == i){
+      return n;
+   }else if(n->val < i){
+      return find(n->right, i);
    }
-   return curr;
+   return find(n->left, i);
 }
 
 treenode** find( treenode** n, int i ){
-   treenode** curr = n;
-   while(curr!= nullptr){
-      if(curr->val == i){
-         return curr;
-         break;
-      }
-      else if(curr->val > i)
-         curr = curr->left;
-      else if(curr->val < i)
-         curr = curr->right;      
+   if( *n == nullptr || (*n)->val == i ){
+      return n;
+   }else if((*n)->val < i){
+      return find(&(*n)->right, i);
    }
-   return curr;
+   return find(&(*n)->left, i);
 }
 
-// // PROOFREADING IS NEEDED
-// bool set::insert(int i){
-//    treenode* curr = find( tr, i );
-//    bool status = TRUE
-//    if(curr->val == i)
-//       status = FALSE;
-//    else if(curr->val>i){
-//       curr = curr->left;
-//       curr->val = i;
-//    }
-//    else{
-//       curr = curr->right;
-//       curr->val = i;      
-//    }
-//    return status;
-// }
-
-// bool set::contains( int i ) const{
-//    if(find(tr, i)==nullptr)
-//       return FALSE; 
-//    return TRUE;
-// }
 
 
-// bool set::remove( int i ){
-//    treenode* curr = find(tr, i);
-//    if (curr->val ==i){
-//       if(curr->left != nullptr & curr->right != nullptr){
-//          treenode temp = removerightmost(curr);
-//          curr->val = temp->val;
-//          curr = temp;
-//          delete temp;
-//       }
-//       if(curr->left == nullptr & curr->right == nullptr){
-//          delete curr;
-//          curr = nullptr;
-//       }else if(curr->left != nullptr){
-//          treenode* temp = curr;
-//          curr = curr ->left;
-//          delete temp;
-//       }else if(curr->right != nullptr){
-//          treenode* temp = curr;
-//          curr = curr ->right;
-//          delete temp;
-//       }
-//       return TRUE;
-//    }
-//    return FALSE;   
-// }
+bool set::insert(int i){
+   treenode** curr = find( &tr, i );
+   
+   if(*curr == nullptr){
+      *curr = new treenode(i);
+      return true;
+   }
+   return false;
+}
 
-// treenode* removerightmost( treenode** from ){
-//    treenode temp = from->right;
-//    while(temp->left!=nullptr){
-//       temp = temp->left
-//    }
-//    return temp;
+bool set::contains( int i ) const{
+   if(find(tr, i)==nullptr)
+      return false; 
+   return true;
+}
+
+
+treenode* removerightmost( treenode** from ){
+   if((*from)-> right == nullptr){
+      treenode* curr = *from;
+      *from = (*from)->left;
+      return curr;
+   }
+   return removerightmost(&(*from)->right);
+}
+
+bool set::remove( int i){
+   treenode** curr = find(&tr, i);
+
+   if(*curr == nullptr)
+      return false;
+   if((*curr)->right == nullptr && (*curr)->left == nullptr){
+      delete *curr;
+      *curr = nullptr;
+   }else if((*curr)->right == nullptr && (*curr)->left != nullptr){
+      treenode* temp = *curr;
+      (*curr) = (*curr)->left;
+      delete temp;
+      temp = nullptr;
+   }else{
+      treenode* rightmost = removerightmost(curr);
+      (*curr) -> val = rightmost->val;
+      delete rightmost;
+      rightmost = nullptr;
+   }
+   return true;
+}
+
+size_t size( const treenode* n ){
+   if (n == nullptr){
+      return 0;
+   }
+   return size(n->left) + size(n->right) + 1;
+}  
+
+void clear(treenode *n){
+   if (n != nullptr){
+      clear(n->left);
+      clear(n->right);
+      delete n;
+   }
+}
+
+void set::clear(){
+   ::clear(tr);
+   tr = nullptr;
+}
+
+bool set::isempty(){
+   return tr == nullptr;
+}
+   
+size_t height(const treenode *n) {
+   if (n == nullptr) {
+     return 0;
+   }
+   return std::max(height(n->left), height(n->right)) + 1;
+}
+
+// size_t height(const treenode *n) {
+//    return log_base2(size(n) + 1) + 1;
 // }
