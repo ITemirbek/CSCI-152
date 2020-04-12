@@ -137,13 +137,32 @@ bool set::contains( int i ) const{
 
 
 treenode* removerightmost( treenode** from ){
-   if((*from)-> right == nullptr){
+   if(*from == nullptr){
+      return nullptr;
+   }
+   if ((*from)->right==nullptr){
       treenode* curr = *from;
       *from = (*from)->left;
       return curr;
    }
    return removerightmost(&(*from)->right);
 }
+
+
+// treenode* removerightmost( treenode** from ){
+//    if (*from == nullptr){
+//       return nullptr;
+//    }
+
+//    treenode ** curr = from;
+//    while((*curr)->right != nullptr){
+//       curr = &(*curr)->right;
+//    }
+//    treenode *temp = *curr;
+//    *curr = (*curr)->left;
+//    return temp;
+// }
+
 
 bool set::remove( int i){
    treenode** curr = find(&tr, i);
@@ -153,16 +172,23 @@ bool set::remove( int i){
    if((*curr)->right == nullptr && (*curr)->left == nullptr){
       delete *curr;
       *curr = nullptr;
-   }else if((*curr)->right == nullptr && (*curr)->left != nullptr){
-      treenode* temp = *curr;
-      (*curr) = (*curr)->left;
-      delete temp;
-      temp = nullptr;
+   // }else if((*curr)->right == nullptr && (*curr)->left != nullptr){
+   //    treenode* temp = *curr;
+   //    (*curr) = (*curr)->left;
+   //    delete temp;
+   //    temp = nullptr;
    }else{
-      treenode* rightmost = removerightmost(curr);
-      (*curr) -> val = rightmost->val;
-      delete rightmost;
-      rightmost = nullptr;
+      treenode* rightmost = removerightmost(&(*curr)->left);
+      if(rightmost==nullptr){
+         treenode *temp = *curr;
+         *curr = (*curr)->right;
+         delete temp;
+      }else{
+         (*curr) -> val = rightmost->val;
+         delete rightmost;
+         rightmost = nullptr;         
+      }
+
    }
    return true;
 }

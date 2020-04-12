@@ -41,6 +41,7 @@ int main( int argc, char* argv[ ] )
    small. insert( 121 );
 
    std::cout << "before removal\n";
+   std::cout << small << "\n"; 
    small. remove( 125 ); 
    std::cout << "after removal\n";
    std::cout << small << "\n";  
